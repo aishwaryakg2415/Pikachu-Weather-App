@@ -1,0 +1,267 @@
+.root{
+    --background-yellow: #FFFC47;
+    --border-yellow:rgba(255, 203, 5, 1);
+    --heading-text:rgba(0, 136, 255, 1);
+    --star-yellow:rgba(255, 203, 5, 0.7);
+    --white:rgba(255, 255, 255, 1);
+    --black:rgba(0, 0, 0, 1);
+
+    --image-path-daybackground: url('./assets/daybg.png');
+    --image-path-nightbackground: url('./assets/nightbg.png');
+    --image-path-day: url('./assets/day.png');
+    --image-path-night: url('./assets/night.png');
+    --border-radius: 0.31269rem;
+    --border-width-main: 7px;
+    --border-width-inner: 3.413px;
+    --padding-container: 0.62538rem;
+    --gap-icons: 0.375rem;
+    --gap-button: 0.58369rem;
+
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    
+}
+
+.container{
+    position: relative;
+    top: 13px;
+    width: 600px;
+    height: 716px;
+    border: var(--border-width-main) solid var(--border-yellow);
+    border-radius: var(--border-radius);
+    background-color: var(--background-yellow);
+    align-items: center;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+h1{
+    width: 172px;
+    height: 59px;
+    font-family: 'Pixelify Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--heading-text);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    position: relative;
+    top: -12px;
+    right: -11px;
+
+}
+
+.temperature-controller {
+    display: flex;
+    position: relative;
+    top: -98px;
+    left: 455px;
+    gap: var(--gap-icons);
+}
+
+.celsius-icon, .fahrenheit-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 2px;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.inner-container {
+    position: relative;
+    width: 619px;
+    height: 627px;
+    top: -76px;
+    left: -13px;
+    border: var(--border-width-inner) solid var(--border-yellow);
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+    background-size: cover;       
+    background-position: center;   
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Pikachu animation (9-frame sequence, pure CSS) */
+.pikachu-seq {
+    position: absolute;
+    width: 461px;
+    height: 264px;
+    right: 73px;
+    bottom: 326px;
+    pointer-events: none;
+    z-index: 6;
+    display: block;
+}
+
+.pikachu-seq .pik-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  animation: frameShow 1800ms linear infinite;
+  animation-fill-mode: both;
+  /* negative delay staggers so the sequence starts immediately */
+  animation-delay: calc(-1 * var(--i) * 200ms);
+}
+
+/* Each frame visible for one slot (200ms) out of 9 -> 1800ms total */
+@keyframes frameShow {
+  /* show during the first 11.111...% of its cycle (200ms of 1800ms) */
+  0% { opacity: 1; }
+  11.111% { opacity: 1; }
+  11.112% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* small bounce effect to make Pikachu lively (optional) */
+.pikachu-seq .pik-frame {
+  transition: transform 120ms ease;
+}
+.pikachu-seq .pik-frame:active { transform: translateY(-4px) scale(1.02); }
+
+/* Make sure inner-container is positioned relative so absolute children align */
+.inner-container { position: relative; }
+
+h2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    position: absolute;
+    width: 166px;
+    height: 160px;
+    left: 27px;
+    top: -35px;
+    background: url('./assets/pokeballl.png');
+    font-family: 'Pixeboy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 80px;
+    color: var(--black);
+    animation: float 3s ease-in-out infinite;
+}
+
+h3{
+    width: 269px;
+    height: 38px;
+    font-family: 'Pixelify Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: var(--black);
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 31px;
+    gap: 10px;
+    position: absolute;
+    width: 371px;
+    height: 90px;
+    left: 133px;
+    top: 408px;
+    background: var(--white);
+    border: 3px solid var(--border-yellow);
+    border-radius: 20px;
+
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.pokeball {
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  top: -85px;
+  left: 227px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.pokeball2 {
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  top: 179px;
+  left: -245px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pokeball1 {
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  top: 103px;
+  left: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.star1{
+    position: absolute;
+    width: 69px;
+    height: 65px;
+    left: 100px;
+    top: 406px;
+    background: url('./assets/star.png');
+}
+
+.star2{
+    position: absolute;
+    width: 43px;
+    height: 44px;
+    left: 76px;
+    top: 484px;
+    background: url('./assets/star1.png');
+}
+
+.star3{
+    position: absolute;
+    width: 69px;
+    height: 65px;
+    left: 125px;
+    top: 514px;
+    background: url('./assets/star.png');
+}
